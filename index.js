@@ -59,7 +59,7 @@ app.post('/webhook/incoming', jsonParser, function (req, res) {
         errorMsg;
 
     payload = req.body;
-    logger.info('Starting deploy!\n');
+    logger.info('Starting deploy!');
 
     // Different repos
     repoUrl = payload.repository ? payload.repository.url : '';
@@ -95,7 +95,7 @@ app.post('/webhook/incoming', jsonParser, function (req, res) {
     // Exec commands
     for (i in actualConf.commands){
         command = actualConf.commands[i];
-        logger.info('Running: ' + command + '\n');
+        logger.info('Running: ' + command);
         execResult = syncExec(command, {cwd: dir});
         if (execResult.status){
             logger.error('Command error!',
@@ -107,7 +107,7 @@ app.post('/webhook/incoming', jsonParser, function (req, res) {
 });
 
 serverPort = serverPort || 3000;
-logger.info('Starting web server...\n');
+logger.info('Starting web server...');
 app.listen(serverPort);
-logger.info('Server running on port ' + serverPort + '\n');
+logger.info('Server running on port ' + serverPort);
 module.exports = app;
