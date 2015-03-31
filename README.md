@@ -2,7 +2,7 @@
 
 Webhook for deploy applications
 
-[![build status](https://secure.travis-ci.org/somadl/webhook-me.png)](http://travis-ci.org/somadl/webhook-me)
+[![Circle CI](https://circleci.com/gh/somadl/webhook-me.svg?style=svg)](https://circleci.com/gh/somadl/webhook-me)
 
 ## Installation
 
