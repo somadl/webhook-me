@@ -4,6 +4,7 @@
   "description": "Webhook for deploy applications",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "node_modules/.bin/grunt ci"
   },
   "repository": {
@@ -40,5 +41,8 @@
     "grunt-mocha-cli": "~1.1.0",
     "node-fixtures": "0.0.1",
     "supertest": "^0.15.0"
+  },
+  "bin": {
+      "webhookme": "./bin/webhookme"
   }
 }
