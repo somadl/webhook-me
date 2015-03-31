@@ -10,9 +10,28 @@ var express = require('express'),
     syncExec = require('sync-exec'),
     path = require('path'),
     app = express(),
-    jsonParser = bodyParser.json();
+    jsonParser = bodyParser.json(),
+    serverPort,
+    confFile = 'config.yml';
 
-app.conf = yaml.safeLoad(fs.readFileSync('config.yml', 'utf8'));
+// Gets commandline args
+process.argv.forEach(function (val, index, array) {
+    if (!val){
+        return 0;
+    }
+    if (val === '--conf' || val === '-c'){
+        confFile = array[index+1] || confFile;
+    } else if (val === '--port' || val === '-p'){
+        serverPort = array[index+1] || serverPort;
+    }
+});
+
+app.conf = yaml.safeLoad(fs.readFileSync(confFile, 'utf8'));
+
+// Gets server config
+if (app.conf.server){
+    serverPort = serverPort || app.conf.server.port;
+}
 
 app.post('/webhook/incoming', jsonParser, function (req, res) {
     var i,
@@ -29,12 +48,12 @@ app.post('/webhook/incoming', jsonParser, function (req, res) {
     // Different repos
     repoUrl = payload.repository ? payload.repository.url : '';
     repoUrl = repoUrl.replace('.git', '');
-    if (!payload.repository || !app.conf[repoUrl]){
+    if (!payload.repository || !app.conf || !app.conf.deploys[repoUrl]){
         return res.status(406)
             .json({message: 'Repository not sent'});
     }
 
-    actualConf = app.conf[repoUrl];
+    actualConf = app.conf.deploys[repoUrl];
     branch = payload.ref.split('/').pop();
 
     // Different branches
@@ -63,5 +82,7 @@ app.post('/webhook/incoming', jsonParser, function (req, res) {
     res.sendStatus(200);
 });
 
-app.listen(3000);
+serverPort = serverPort || 3000;
+app.listen(serverPort);
+console.log('Server running on port' + serverPort);
 module.exports = app;
