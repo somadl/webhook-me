@@ -68,21 +68,19 @@ app.post('/webhook/incoming', jsonParser, function (req, res) {
         return res.status(500)
                   .json({path: dir, message: 'Invalid path'});
     }
+    res.sendStatus(200);
 
     // Exec commands
     for (i in actualConf.commands){
         command = actualConf.commands[i];
         execResult = syncExec(command, {cwd: dir});
         if (execResult.status){
-            return res.status(500)
-                      .json({command: command, error: execResult.stderr });
+            console.error({command: command, error: execResult.stderr });
         }
     }
-
-    res.sendStatus(200);
 });
 
 serverPort = serverPort || 3000;
 app.listen(serverPort);
-console.log('Server running on port' + serverPort);
+console.log('Server running on port ' + serverPort);
 module.exports = app;

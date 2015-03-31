@@ -59,21 +59,6 @@ describe('webhook-me', function() {
     });
 
     // 500
-    it('should validate wrong commands', function(done) {
-        var wrongPayload = clone(payload);
-        wrongPayload.repository.url = 'http://www.wrong-command.com/command';
-        agent.post('/webhook/incoming')
-            .send(wrongPayload)
-            .expect(500)
-            .end(function(err) {
-                if (err){
-                    throw err;
-                }
-                done();
-            });
-    });
-
-    // 500
     it('should validate wrong path', function(done) {
         var wrongPayload = clone(payload);
         wrongPayload.repository.url = 'http://www.wrong-path.com/command';
