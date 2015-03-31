@@ -12,7 +12,10 @@ var express = require('express'),
     app = express(),
     jsonParser = bodyParser.json(),
     serverPort,
-    confFile = 'config.yml';
+    confFile = 'config.yml',
+    winston = require('winston'),
+    logFileOutput = './log.txt',
+    logger;
 
 // Gets commandline args
 process.argv.forEach(function (val, index, array) {
@@ -23,6 +26,8 @@ process.argv.forEach(function (val, index, array) {
         confFile = array[index+1] || confFile;
     } else if (val === '--port' || val === '-p'){
         serverPort = array[index+1] || serverPort;
+    } else if (val === '--log' || val === '-l'){
+        logFileOutput = array[index+1] || logFileOutput;
     }
 });
 
@@ -31,7 +36,16 @@ app.conf = yaml.safeLoad(fs.readFileSync(confFile, 'utf8'));
 // Gets server config
 if (app.conf.server){
     serverPort = serverPort || app.conf.server.port;
+    logFileOutput = logFileOutput || app.conf.server.logFile;
 }
+
+// Log file output
+logger = new (winston.Logger)({
+    transports: [
+        new (winston.transports.Console)({ level: 'info' }),
+        new (winston.transports.File)({ filename: logFileOutput })
+    ]
+});
 
 app.post('/webhook/incoming', jsonParser, function (req, res) {
     var i,
@@ -41,16 +55,20 @@ app.post('/webhook/incoming', jsonParser, function (req, res) {
         execResult,
         dir,
         repoUrl,
-        actualConf;
+        actualConf,
+        errorMsg;
 
     payload = req.body;
+    logger.info('Starting deploy!\n');
 
     // Different repos
     repoUrl = payload.repository ? payload.repository.url : '';
     repoUrl = repoUrl.replace('.git', '');
     if (!payload.repository || !app.conf || !app.conf.deploys[repoUrl]){
+        errorMsg = 'Invalid repository';
+        logger.error(errorMsg, req.body);
         return res.status(406)
-            .json({message: 'Repository not sent'});
+            .json({message: errorMsg});
     }
 
     actualConf = app.conf.deploys[repoUrl];
@@ -58,29 +76,38 @@ app.post('/webhook/incoming', jsonParser, function (req, res) {
 
     // Different branches
     if (branch != actualConf.branch){
+        errorMsg = 'Branch was not found in configuration file';
+        logger.error(errorMsg, req.body);
         return res.status(304)
-            .json({message: 'Branch was not found in configuration file'});
+            .json({message: errorMsg});
     }
 
     // Resolve path
     dir = path.resolve(actualConf.path);
     if (!fs.existsSync(dir)){
+        errorMsg = 'Invalid path';
+        logger.error(errorMsg, req.body);
         return res.status(500)
-                  .json({path: dir, message: 'Invalid path'});
+                  .json({path: dir, message: errorMsg});
     }
     res.sendStatus(200);
 
     // Exec commands
     for (i in actualConf.commands){
         command = actualConf.commands[i];
+        logger.info('Running: ' + command + '\n');
         execResult = syncExec(command, {cwd: dir});
         if (execResult.status){
-            console.error({command: command, error: execResult.stderr });
+            logger.error('Command error!',
+                {command: command, error: execResult.stderr });
         }
     }
+
+    logger.info('Deploy finished!')
 });
 
 serverPort = serverPort || 3000;
+logger.info('Starting web server...\n');
 app.listen(serverPort);
-console.log('Server running on port ' + serverPort);
+logger.info('Server running on port ' + serverPort + '\n');
 module.exports = app;
