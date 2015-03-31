@@ -1,0 +1,24 @@
+'https://github.com/somadl/webhook-me':
+  name: Webhook Me
+  type: github
+  path: ./
+  branch: master
+  commands:
+    - echo 'FOI'
+
+'http://www.wrong-command.com/command':
+  name: Webhook Me
+  type: github
+  path: ./
+  branch: master
+  commands:
+    - wrong-command
+
+'http://www.wrong-path.com/command':
+  name: Webhook Me
+  type: github
+  path: ./wrong-path
+  branch: master
+  commands:
+    - echo 'FOI'
+

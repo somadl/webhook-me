@@ -1,0 +1,7 @@
+'https://github.com/somadl/webhook-me':
+  name: Webhook Me
+  type: github
+  path: ./
+  branch: master
+  commands:
+    - echo 'FOI'
