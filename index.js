@@ -8,6 +8,7 @@ var express = require('express'),
     yaml = require('js-yaml'),
     fs = require('fs'),
     syncExec = require('sync-exec'),
+    moment = require('moment'),
     path = require('path'),
     app = express(),
     jsonParser = bodyParser.json(),
@@ -56,8 +57,11 @@ app.post('/webhook/incoming', jsonParser, function (req, res) {
         dir,
         repoUrl,
         actualConf,
-        errorMsg;
+        errorMsg,
+        start,
+        date;
 
+    start = moment();
     payload = req.body;
     logger.info('Starting deploy!');
 
@@ -103,7 +107,8 @@ app.post('/webhook/incoming', jsonParser, function (req, res) {
         }
     }
 
-    logger.info('Deploy finished!')
+    date = moment() - start;
+    logger.info('Deploy finished! (' + moment.utc(date).format('HH:mm:ss') + ')');
 });
 
 serverPort = serverPort || 3000;
