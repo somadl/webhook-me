@@ -1,0 +1,478 @@
+{
+    "payload": {
+        "compare": "https://github.com/rafaeldl/maps-tracker/compare/e1cd0edc3a8c...888afa1e8925",
+        "previous_successful_build": {
+            "build_time_millis": 35368,
+            "status": "success",
+            "build_num": 66
+        },
+        "build_parameters": null,
+        "oss": false,
+        "committer_date": "2015-03-31T19:17:05-03:00",
+        "steps": [
+            {
+                "name": "Starting the build",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "Starting the build",
+                        "parallel": false,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "Starting the build",
+                        "bash_command": null,
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:13.331Z",
+                        "type": "infrastructure",
+                        "messages": [],
+                        "start_time": "2015-03-31T22:17:13.131Z",
+                        "exit_code": null,
+                        "canceled": null,
+                        "step": 0,
+                        "run_time_millis": 200,
+                        "has_output": false
+                    }
+                ]
+            },
+            {
+                "name": "Start container",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "Start container",
+                        "parallel": true,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "Start container",
+                        "bash_command": null,
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:16.927Z",
+                        "source": "config",
+                        "type": "infrastructure",
+                        "messages": [],
+                        "output_url": "https://circle-production-action-output.s3.amazonaws.com/162aaa6807b10d7f9ec1b155-rafaeldl-maps-tracker-1-0?AWSAccessKeyId=AKIAI3VNUNBFDODWKRVA&Expires=1585693069&Signature=frm0Rod9%2Bb8D8Apy3cMeQXrids0%3D",
+                        "start_time": "2015-03-31T22:17:13.338Z",
+                        "exit_code": 0,
+                        "canceled": null,
+                        "step": 1,
+                        "run_time_millis": 3589,
+                        "has_output": true
+                    }
+                ]
+            },
+            {
+                "name": "Restore source cache",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "Restore source cache",
+                        "parallel": false,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "Restore source cache",
+                        "bash_command": null,
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:18.592Z",
+                        "source": "cache",
+                        "type": "checkout",
+                        "messages": [],
+                        "output_url": "https://circle-production-action-output.s3.amazonaws.com/262aaa6807b10d7fcec1b155-rafaeldl-maps-tracker-2-0?AWSAccessKeyId=AKIAI3VNUNBFDODWKRVA&Expires=1585693069&Signature=QgIrD%2FP2uWXHSkPy73iNHU9ECgQ%3D",
+                        "start_time": "2015-03-31T22:17:16.935Z",
+                        "exit_code": null,
+                        "canceled": null,
+                        "step": 2,
+                        "run_time_millis": 1657,
+                        "has_output": true
+                    }
+                ]
+            },
+            {
+                "name": "Checkout using deploy key: 6a:5c:cd:7a:b5:11:be:34:bd:8e:f3:d0:0b:47:65:f7",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "Checkout using deploy key: 6a:5c:cd:7a:b5:11:be:34:bd:8e:f3:d0:0b:47:65:f7",
+                        "parallel": true,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "Checkout using deploy key: 6a:5c:cd:7a:b5:11:be:34:bd:8e:f3:d0:0b:47:65:f7",
+                        "bash_command": null,
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:20.978Z",
+                        "source": "config",
+                        "type": "checkout",
+                        "messages": [],
+                        "output_url": "https://circle-production-action-output.s3.amazonaws.com/362aaa6807b10d7feec1b155-rafaeldl-maps-tracker-3-0?AWSAccessKeyId=AKIAI3VNUNBFDODWKRVA&Expires=1585693069&Signature=aJ4%2Fq1N8lS%2FcGWMKDQ5zli7Qf9Q%3D",
+                        "start_time": "2015-03-31T22:17:18.605Z",
+                        "exit_code": 0,
+                        "canceled": null,
+                        "step": 3,
+                        "run_time_millis": 2373,
+                        "has_output": true
+                    }
+                ]
+            },
+            {
+                "name": "Configure the build",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "Configure the build",
+                        "parallel": false,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "Configure the build",
+                        "bash_command": null,
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:21.043Z",
+                        "source": "cache",
+                        "type": "machine",
+                        "messages": [],
+                        "start_time": "2015-03-31T22:17:20.986Z",
+                        "exit_code": null,
+                        "canceled": null,
+                        "step": 4,
+                        "run_time_millis": 57,
+                        "has_output": false
+                    }
+                ]
+            },
+            {
+                "name": "Restore cache",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "Restore cache",
+                        "parallel": false,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "Restore cache",
+                        "bash_command": null,
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:27.621Z",
+                        "source": "cache",
+                        "type": "machine",
+                        "messages": [],
+                        "output_url": "https://circle-production-action-output.s3.amazonaws.com/562aaa6807b10d7f1fc1b155-rafaeldl-maps-tracker-5-0?AWSAccessKeyId=AKIAI3VNUNBFDODWKRVA&Expires=1585693069&Signature=7tG9eVuRPeA6LH3s3x4qlbjhOX4%3D",
+                        "start_time": "2015-03-31T22:17:21.049Z",
+                        "exit_code": null,
+                        "canceled": null,
+                        "step": 5,
+                        "run_time_millis": 6572,
+                        "has_output": true
+                    }
+                ]
+            },
+            {
+                "name": "Exporting NODE_ENV",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "Exporting NODE_ENV",
+                        "parallel": true,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "Exporting NODE_ENV",
+                        "bash_command": null,
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:28.256Z",
+                        "source": "inference",
+                        "type": "dependencies",
+                        "messages": [],
+                        "start_time": "2015-03-31T22:17:27.631Z",
+                        "exit_code": 0,
+                        "canceled": null,
+                        "step": 6,
+                        "run_time_millis": 625,
+                        "has_output": false
+                    }
+                ]
+            },
+            {
+                "name": "Exporting PATH",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "Exporting PATH",
+                        "parallel": true,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "Exporting PATH",
+                        "bash_command": null,
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:28.887Z",
+                        "source": "inference",
+                        "type": "dependencies",
+                        "messages": [],
+                        "start_time": "2015-03-31T22:17:28.263Z",
+                        "exit_code": 0,
+                        "canceled": null,
+                        "step": 7,
+                        "run_time_millis": 624,
+                        "has_output": false
+                    }
+                ]
+            },
+            {
+                "name": "npm install",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "((npm :install))",
+                        "parallel": true,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "npm install",
+                        "bash_command": "npm install",
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:39.437Z",
+                        "source": "inference",
+                        "type": "dependencies",
+                        "messages": [],
+                        "output_url": "https://circle-production-action-output.s3.amazonaws.com/862aaa6807b10d7f8fc1b155-rafaeldl-maps-tracker-8-0?AWSAccessKeyId=AKIAI3VNUNBFDODWKRVA&Expires=1585693069&Signature=K34aKpYC6SKL31rJodLrvY%2FyEAk%3D",
+                        "start_time": "2015-03-31T22:17:28.896Z",
+                        "exit_code": 0,
+                        "canceled": null,
+                        "step": 8,
+                        "run_time_millis": 10541,
+                        "has_output": true
+                    }
+                ]
+            },
+            {
+                "name": "Save cache",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "Save cache",
+                        "parallel": false,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "Save cache",
+                        "bash_command": null,
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:40.237Z",
+                        "source": "cache",
+                        "type": "database",
+                        "messages": [],
+                        "output_url": "https://circle-production-action-output.s3.amazonaws.com/962aaa6807b10d7f30d1b155-rafaeldl-maps-tracker-9-0?AWSAccessKeyId=AKIAI3VNUNBFDODWKRVA&Expires=1585693069&Signature=8pMIfJuA4pTEu1EktA9TGDKopro%3D",
+                        "start_time": "2015-03-31T22:17:39.448Z",
+                        "exit_code": null,
+                        "canceled": null,
+                        "step": 9,
+                        "run_time_millis": 789,
+                        "has_output": true
+                    }
+                ]
+            },
+            {
+                "name": "npm test",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "((npm :test))",
+                        "parallel": true,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "npm test",
+                        "bash_command": "npm test",
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:44.383Z",
+                        "source": "inference",
+                        "type": "test",
+                        "messages": [],
+                        "output_url": "https://circle-production-action-output.s3.amazonaws.com/a62aaa6807b10d7f40d1b155-rafaeldl-maps-tracker-10-0?AWSAccessKeyId=AKIAI3VNUNBFDODWKRVA&Expires=1585693069&Signature=PlZpqLUYn21KIK1saf4ygq%2BY6lg%3D",
+                        "start_time": "2015-03-31T22:17:40.248Z",
+                        "exit_code": 0,
+                        "canceled": null,
+                        "step": 10,
+                        "run_time_millis": 4135,
+                        "has_output": true
+                    }
+                ]
+            },
+            {
+                "name": "Collect test metadata",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "Collect test metadata",
+                        "parallel": true,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "Collect test metadata",
+                        "bash_command": null,
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:45.638Z",
+                        "type": "teardown",
+                        "messages": [],
+                        "output_url": "https://circle-production-action-output.s3.amazonaws.com/b62aaa6807b10d7f80d1b155-rafaeldl-maps-tracker-11-0?AWSAccessKeyId=AKIAI3VNUNBFDODWKRVA&Expires=1585693069&Signature=5FBrE5jz%2F3mAMB24kYhMNL%2Fxq%2Fk%3D",
+                        "start_time": "2015-03-31T22:17:44.393Z",
+                        "exit_code": null,
+                        "canceled": null,
+                        "step": 11,
+                        "run_time_millis": 1245,
+                        "has_output": true
+                    }
+                ]
+            },
+            {
+                "name": "Collect artifacts",
+                "actions": [
+                    {
+                        "truncated": false,
+                        "index": 0,
+                        "command": "Collect artifacts",
+                        "parallel": true,
+                        "failed": null,
+                        "infrastructure_fail": null,
+                        "name": "Collect artifacts",
+                        "bash_command": null,
+                        "status": "success",
+                        "timedout": null,
+                        "continue": null,
+                        "end_time": "2015-03-31T22:17:46.893Z",
+                        "type": "teardown",
+                        "messages": [],
+                        "output_url": "https://circle-production-action-output.s3.amazonaws.com/c62aaa6807b10d7f90d1b155-rafaeldl-maps-tracker-12-0?AWSAccessKeyId=AKIAI3VNUNBFDODWKRVA&Expires=1585693069&Signature=wX2ktHAZz0fYB2RlAE%2FAUdQVe9g%3D",
+                        "start_time": "2015-03-31T22:17:45.648Z",
+                        "exit_code": null,
+                        "canceled": null,
+                        "step": 12,
+                        "run_time_millis": 1245,
+                        "has_output": true
+                    }
+                ]
+            }
+        ],
+        "body": "",
+        "usage_queued_at": "2015-03-31T22:17:10.809Z",
+        "retry_of": null,
+        "reponame": "maps-tracker",
+        "build_url": "https://circleci.com/gh/rafaeldl/maps-tracker/67",
+        "parallel": 1,
+        "failed": null,
+        "branch": "master",
+        "username": "rafaeldl",
+        "author_date": "2015-03-31T19:17:05-03:00",
+        "why": "github",
+        "user": {
+            "is_user": true,
+            "login": "rafaeldl",
+            "name": "Rafael Laurindo",
+            "email": "rafaeldll@gmail.com"
+        },
+        "vcs_revision": "888afa1e892517020d128e27f6fbb5b2476ee42d",
+        "owners": ["rafaeldl"],
+        "build_num": 67,
+        "infrastructure_fail": false,
+        "ssh_enabled": null,
+        "committer_email": "rafaeldll@gmail.com",
+        "previous": {
+            "build_time_millis": 35368,
+            "status": "success",
+            "build_num": 66
+        },
+        "status": "success",
+        "committer_name": "rafaeldl",
+        "pull_request_urls": [],
+        "retries": null,
+        "subject": "Merge remote-tracking branch 'origin/master'",
+        "timedout": false,
+        "dont_build": null,
+        "feature_flags": {},
+        "lifecycle": "finished",
+        "stop_time": "2015-03-31T22:17:47.186Z",
+        "build_time_millis": 34164,
+        "circle_yml": {
+            "string": "notify:\n  webhooks:\n    # A list of hook hashes, containing the url field\n    - url: http://localizabike.com.br:35729/webhook/incoming\n    #- url: http://www.somadl.com.br/post-test.php\n"
+        },
+        "messages": [],
+        "is_first_green_build": false,
+        "job_name": null,
+        "start_time": "2015-03-31T22:17:13.022Z",
+        "all_commit_details": [
+            {
+                "committer_date": "2015-03-31T19:16:45-03:00",
+                "body": "",
+                "branch": "master",
+                "author_date": "2015-03-31T19:16:45-03:00",
+                "committer_email": "rafaeldll@gmail.com",
+                "commit": "8aca64a6aee9a8cab9d7a1bc85b63ac87bee28f3",
+                "committer_login": "rafaeldl",
+                "committer_name": "rafaeldl",
+                "subject": "Configuração do webhooker",
+                "commit_url": "https://github.com/rafaeldl/maps-tracker/commit/8aca64a6aee9a8cab9d7a1bc85b63ac87bee28f3",
+                "author_login": "rafaeldl",
+                "author_name": "rafaeldl",
+                "author_email": "rafaeldll@gmail.com"
+            },
+            {
+                "committer_date": "2015-03-31T19:17:05-03:00",
+                "body": "",
+                "branch": "master",
+                "author_date": "2015-03-31T19:17:05-03:00",
+                "committer_email": "rafaeldll@gmail.com",
+                "commit": "888afa1e892517020d128e27f6fbb5b2476ee42d",
+                "committer_login": "rafaeldl",
+                "committer_name": "rafaeldl",
+                "subject": "Merge remote-tracking branch 'origin/master'",
+                "commit_url": "https://github.com/rafaeldl/maps-tracker/commit/888afa1e892517020d128e27f6fbb5b2476ee42d",
+                "author_login": "rafaeldl",
+                "author_name": "rafaeldl",
+                "author_email": "rafaeldll@gmail.com"
+            }
+        ],
+        "outcome": "success",
+        "vcs_url": "https://github.com/rafaeldl/maps-tracker",
+        "author_name": "rafaeldl",
+        "node": [
+            {
+                "public_ip_addr": "54.234.209.227",
+                "port": 64721,
+                "username": "ubuntu",
+                "image_id": "circletar-0568-25f2b-20150325T184049Z",
+                "ssh_enabled": null
+            }
+        ],
+        "queued_at": "2015-03-31T22:17:09.892Z",
+        "canceled": false,
+        "author_email": "rafaeldll@gmail.com"
+    }
+}
