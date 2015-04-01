@@ -13,10 +13,13 @@ var express = require('express'),
     app = express(),
     jsonParser = bodyParser.json(),
     serverPort,
+    nodemailer = require('nodemailer'),
     parsers = require('./parsers/payload'),
     confFile = 'config.yml',
     winston = require('winston'),
     logFileOutput = './log.txt',
+    transporter,
+    sendEmail,
     logger;
 
 // Gets commandline args
@@ -35,6 +38,17 @@ process.argv.forEach(function (val, index, array) {
 
 app.conf = yaml.safeLoad(fs.readFileSync(confFile, 'utf8'));
 
+// Email config
+if (app.conf.email){
+    transporter = nodemailer.createTransport({
+        service: app.conf.email.provider,
+        auth: {
+            user: app.conf.email.login,
+            pass: app.conf.email.password
+        }
+    });
+}
+
 // Gets server config
 if (app.conf.server){
     serverPort = serverPort || app.conf.server.port;
@@ -49,10 +63,28 @@ logger = new (winston.Logger)({
     ]
 });
 
+// Sends email to admin
+sendEmail = function(subject, body){
+    var mailOptions = {
+        from: 'Webhook <'+app.conf.email.login+'>', // sender address
+        to: app.conf.email.to, // list of receivers
+        subject: subject, // Subject line
+        html: body // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            logger.error(error);
+        }else{
+            logger.info('Message sent: ' + info.response);
+        }
+    });
+};
+
 app.post('/webhook/incoming', jsonParser, function (req, res) {
     var i,
         payload,
-        branch,
         command,
         execResult,
         dir,
@@ -113,6 +145,9 @@ app.post('/webhook/incoming', jsonParser, function (req, res) {
             if (execResult.status){
                 logger.error('Command error!',
                     {command: command, error: execResult.stderr });
+                sendEmail('Server is burn!', '<p>Command error</p><br/><br/> ' +
+                    JSON.stringify(execResult));
+                return 0;
             }
         }
 

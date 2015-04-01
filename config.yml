@@ -1,4 +1,10 @@
 
+email:
+  login: aaa@aaa.com
+  password: aaa123456
+  provider: Gmail
+  to: bbb@aaa.com
+
 server:
   port: 3000
 
