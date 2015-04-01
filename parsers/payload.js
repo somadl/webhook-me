@@ -3,6 +3,7 @@
  */
 
 exports.circleci = function(payload){
+    payload = payload.payload || {};
     return{
         branch: payload.branch,
         url: payload.vcs_url
@@ -11,7 +12,7 @@ exports.circleci = function(payload){
 
 exports.github = function(payload){
     return{
-        branch: payload.ref.split('/').pop(),
-        url: payload.repository.url
+        branch: payload.ref ? payload.ref.split('/').pop() : '',
+        url: payload.repository ? payload.repository.url : ''
     }
 };

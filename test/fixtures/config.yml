@@ -26,3 +26,11 @@ deploys:
     commands:
       - echo 'FOI'
 
+  circleCi:
+      url: https://github.com/rafaeldl/maps-tracker
+      name: Webhook Me
+      type: circleci
+      path: ./
+      branch: master
+      commands:
+        - echo 'FOI'
