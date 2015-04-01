@@ -145,14 +145,16 @@ app.post('/webhook/incoming', jsonParser, function (req, res) {
             if (execResult.status){
                 logger.error('Command error!',
                     {command: command, error: execResult.stderr });
-                sendEmail('Server is burn!', '<p>Command error</p><br/><br/> ' +
+                sendEmail('Server is burn!', '<h1>'+actualConf.name+'</h1><p>Command error</p><br/><br/> ' +
                     JSON.stringify(execResult));
                 return 0;
             }
         }
 
         date = moment() - start;
-        return logger.info('Deploy finished! (' + moment.utc(date).format('HH:mm:ss') + ')');
+        logger.info('Deploy finished! (' + moment.utc(date).format('HH:mm:ss') + ')');
+        return sendEmail(actualConf.name+' deploy finished!', 'Deploy finished! (' +
+            moment.utc(date).format('HH:mm:ss') + ')');
     }
 
     // No repository error
