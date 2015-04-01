@@ -3,7 +3,8 @@ server:
   port: 3000
 
 deploys:
-  'https://github.com/somadl/webhook-me':
+  webhook-me:
+    url: 'https://github.com/somadl/webhook-me'
     name: Webhook Me
     type: github
     path: ./

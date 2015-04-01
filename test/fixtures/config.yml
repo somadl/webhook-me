@@ -1,5 +1,6 @@
 deploys:
-  'https://github.com/somadl/webhook-me':
+  webhookme:
+    url: https://github.com/somadl/webhook-me
     name: Webhook Me
     type: github
     path: ./
@@ -7,7 +8,8 @@ deploys:
     commands:
       - echo 'FOI'
 
-  'http://www.wrong-command.com/command':
+  wrongCommand:
+    url: http://www.wrong-command.com/command
     name: Webhook Me
     type: github
     path: ./
@@ -15,7 +17,8 @@ deploys:
     commands:
       - wrong-command
 
-  'http://www.wrong-path.com/command':
+  wrongPath:
+    url: http://www.wrong-path.com/command
     name: Webhook Me
     type: github
     path: ./wrong-path

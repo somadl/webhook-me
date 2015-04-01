@@ -72,4 +72,20 @@ describe('webhook-me', function() {
                 done();
             });
     });
+
+    // 500
+    it('should validate wrong parser', function(done) {
+        var originalConf = clone(app.conf);
+        app.conf.deploys.webhookme.type = 'invalid';
+        agent.post('/webhook/incoming')
+            .send(payload)
+            .expect(500)
+            .end(function(err) {
+                if (err){
+                    throw err;
+                }
+                app.conf = originalConf;
+                done();
+            });
+    });
 });
